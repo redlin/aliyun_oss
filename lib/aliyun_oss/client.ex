@@ -21,7 +21,8 @@ defmodule Aliyun.Oss.Client do
   defp do_request(req = %Request{verb: "GET"}) do
     HTTPoison.get(
       Request.query_url(req),
-      req.headers
+      req.headers,
+      [recv_timeout: 60_000]
     )
   end
 
@@ -36,7 +37,8 @@ defmodule Aliyun.Oss.Client do
     HTTPoison.post(
       Request.query_url(req),
       req.body,
-      req.headers
+      req.headers,
+      [recv_timeout: 60_000]
     )
   end
 
@@ -44,7 +46,8 @@ defmodule Aliyun.Oss.Client do
     HTTPoison.put(
       Request.query_url(req),
       req.body,
-      req.headers
+      req.headers,
+      [recv_timeout: 60_000]
     )
   end
 
